@@ -30,14 +30,15 @@ function solve(solver::FastGrid, problem::Problem) #original
         hyper = Hyperrectangle(low = local_lower, high = local_upper)
 
         k_1 = size(W, 1) #length(lower)
-        I = zeros(k_1, k_1) #Identity matrix
-        IN = zeros(k_1, k_1) #negative Identity matrix
-        for k = 1:k_1
-            I[k, k] = 1.0
-            IN[k, k] = -1.0
-        end
+        #I = zeros(k_1, k_1) #Identity matrix
+        #IN = zeros(k_1, k_1) #negative Identity matrix
+        #for k = 1:k_1
+            #I[k, k] = 1.0
+            #IN[k, k] = -1.0
+        #end
         #Hi
-        C_1 = vcat(I, IN)
+        #C_1 = vcat(I, IN)
+        C_1 = vcat(Diagonal(ones(k_1)), -Diagonal(ones(k_1)))
         d_1 = vcat(local_upper, -local_lower)
         #Pi
         C = C_1 * W #size(2k_1, k_0)
@@ -47,10 +48,10 @@ function solve(solver::FastGrid, problem::Problem) #original
         for l = 1:length(d)
             sum = 0.0
             for m = 1:size(C, 2)
-                if C[l,m] > 0
-                    sum += low(problem.input, m)
-                elseif C[l,m] < 0
-                    sum += high(problem.input, m)
+                if C[l,m] > 0.0
+                    sum += low(problem.input, m) * C[l,m]
+                elseif C[l,m] < 0.0
+                    sum += high(problem.input, m) * C[l,m]
                 end
             end
             if sum > d[l]
@@ -62,7 +63,7 @@ function solve(solver::FastGrid, problem::Problem) #original
         if inter
             hull = false #if Hi is a hull of Z, or if Pi and center of the input set are close
             for l = 1:length(d)
-                if distance(center, C[l,:], d[l]) > r
+                if distance(center, C[l,:], d[l]) > radius
                     hull = true
                     break
                 end
@@ -88,7 +89,7 @@ function forward_network(solver::FastGrid, nnet::Network, input::Hyperrectangle)
     reach = Hyperrectangle(low = act.(low(input)), high = act.(high(input)))
 
     for i in 2:length(layers)
-        reach = forward_layer(solver, layer[i], reach)
+        reach = forward_layer(solver, layers[i], reach)
     end
     return reach
 end
@@ -106,7 +107,6 @@ function forward_layer(solver::FastGrid, L::Layer, input::Hyperrectangle)
 end
 
 function forward_affine_map(solver::FastGrid, W::Matrix, b::Vector, input::Hyperrectangle)
-    (W, b) = (L.weights, L.bias)
     center = W * input.center + b
     radius = abs.(W) * input.radius
     return Hyperrectangle(center, radius)
@@ -126,10 +126,11 @@ function forward_node(solver::FastGrid, node::Node, input::Hyperrectangle)
     #end
 end
 
-function distance(point::Vector, c::Vector, d::real)
+#distance of point to hyperPlane cx = d
+function distance(point::Vector, c::Vector, d::Real)
     if length(point) == length(c)
-        return abs(point .* c + d)/sqrt(sum(abs2.(c)))
+        return abs(sum(point .* c) - d)/sqrt(sum(abs2.(c)))
     else
-        error("Dimesion dismathch for point and constraint")
+        error("Dimesion dismatch for point and constraint")
     end
 end

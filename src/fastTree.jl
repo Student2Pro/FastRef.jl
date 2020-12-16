@@ -43,7 +43,7 @@ function forward_network(solver::FastTree, nnet::Network, input::Hyperrectangle)
     reach = Hyperrectangle(low = act.(low(input)), high = act.(high(input)))
 
     for i in 2:length(layers)
-        reach = forward_layer(solver, layer[i], reach)
+        reach = forward_layer(solver, layers[i], reach)
     end
     return reach
 end
@@ -68,7 +68,6 @@ function forward_node(solver::FastTree, node::Node, input::Hyperrectangle)
 end
 
 function forward_affine_map(solver::FastTree, W::Matrix, b::Vector, input::Hyperrectangle)
-    (W, b) = (L.weights, L.bias)
     center = W * input.center + b
     radius = abs.(W) * input.radius
     return Hyperrectangle(center, radius)
@@ -76,28 +75,36 @@ end
 
 #to determine whether
 function ishull(x::Hyperrectangle, y::Hyperrectangle, W::Matrix, b::Vector)
+    center = y.center
+    radius = y.radius[1]
     k_1 = size(W, 1) #length(lower)
-    I = zeros(k_1, k_1) #Identity matrix
-    IN = zeros(k_1, k_1) #negative Identity matrix
-    for k = 1:k_1
-        I[k, k] = 1.0
-        IN[k, k] = -1.0
-    end
+    #I = zeros(k_1, k_1) #Identity matrix
+    #IN = zeros(k_1, k_1) #negative Identity matrix
+    #for k = 1:k_1
+        #I[k, k] = 1.0
+        #IN[k, k] = -1.0
+    #end
     #Hi
-    C_1 = vcat(I, IN)
+    #C_1 = vcat(I, IN)
+    C_1 = vcat(Diagonal(ones(k_1)), -Diagonal(ones(k_1)))
     d_1 = vcat(high(x), -low(x))
     #Pi
     C = C_1 * W #size(2k_1, k_0)
     d = d_1 - C_1 * b #size(2k_1)
+
+    #print("C: ")
+    #println(C)
+    #print("d: ")
+    #println(d)
 
     inter = true #if the intersection of Pi and the input set is empty
     for l = 1:length(d)
         sum = 0.0
         for m = 1:size(C, 2)
             if C[l,m] > 0
-                sum += low(problem.input, m)
-            elseif C[l,m] < 0
-                sum += high(problem.input, m)
+                sum += low(y, m) * C[l,m]
+            elseif C[l,m] < 0.0
+                sum += high(y, m) * C[l,m]
             end
         end
         if sum > d[l]
@@ -109,7 +116,12 @@ function ishull(x::Hyperrectangle, y::Hyperrectangle, W::Matrix, b::Vector)
     if inter
         hull = false #if Hi is a hull of Z, or if Pi and center of the input set are close
         for l = 1:length(d)
-            if distance(center, C[l,:], d[l]) > r
+            #print(l)
+            #print(" distance: ")
+            #println(distance(center, C[l,:], d[l]))
+            #print("radius: ")
+            #println(radius)
+            if distance(center, C[l,:], d[l]) > radius
                 return true
             end
         end

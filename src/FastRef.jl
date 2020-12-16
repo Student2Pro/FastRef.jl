@@ -53,16 +53,15 @@ include("reachability.jl")
 
 include("maxSens.jl")
 
-include("fasrGrid.jl")
+include("fastGrid.jl")
 
 include("speGuid.jl")
-include("speGuid2.jl")
 
 include("fastTree.jl")
 
 export MaxSens
-export fasrGrid
-export SpeGuid, SpeGuid2
-export fastTree
+export FastGrid
+export SpeGuid
+export FastTree
 
 end
