@@ -2,11 +2,11 @@ using FastRef
 using LazySets
 import FastRef: forward_network, forward_affine_map, ishull
 
-nnet = read_nnet("nnet/86442.nnet")
-solver = FastGrid(0.3)
+nnet = read_nnet("nnet/mnist-20.nnet")
+solver = DimGrid(130.0)
 
-in_hyper = Hyperrectangle(fill(1.0, 8), fill(1.0, 8))
-out_hyper = Hyperrectangle(fill(0.0, 2), fill(1.0, 2))
+in_hyper = Hyperrectangle(fill(1.0, 400), fill(1.0, 400))
+out_hyper = Hyperrectangle(fill(0.0, 10), fill(1.0, 10))
 problem = Problem(nnet, in_hyper, out_hyper)
 timed_result =@timed solve(solver, problem)
 print("FastGrid - test")

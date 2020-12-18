@@ -2,11 +2,11 @@ using FastRef
 using LazySets
 import FastRef: forward_network, forward_affine_map, ishull
 
-center = fill(1.0, 784)
-radius = fill(1.0, 784)
+center = fill(1.0, 400)
+radius = fill(1.0, 400)
 inputSet = Hyperrectangle(center, radius)
 
-nnet = read_nnet("nnet/mnist1.nnet")
+nnet = read_nnet("nnet/mnist-20.nnet")
 solver1 = MaxSens(2.0, true)
 solver2 = FastGrid(2.0)
 
