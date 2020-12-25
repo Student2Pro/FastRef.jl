@@ -2,17 +2,17 @@ using FastRef
 using LazySets
 import FastRef: forward_network, forward_affine_map, ishull
 
-nnet = read_nnet("nnet/86442.nnet")
+nnet = read_nnet("nnet/mnist-20.nnet")
 
-delta = 0.001
+delta = 0.1
 
 solver5 = SpeGuid(delta)
 solver6 = HullTree(delta)
 solver7 = DimTree(delta)
 solver8 = FastTree(delta)
 
-in_hyper = Hyperrectangle(fill(1.0, 8), fill(1.0, 8))
-out_hyper = Hyperrectangle(fill(0.0, 2), fill(10.0, 2))
+in_hyper = Hyperrectangle(fill(1.0, 400), fill(1.0, 400))
+out_hyper = Hyperrectangle(fill(0.0, 10), fill(10.0, 10))
 problem = Problem(nnet, in_hyper, out_hyper)
 
 file = open("results/group2.txt", "a")
