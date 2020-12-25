@@ -27,7 +27,7 @@ Sound but not complete.
 """
 @with_kw struct MaxSens
     resolution::Float64 = 1.0
-    tight::Bool         = false
+    #tight::Bool         = false
 end
 
 # This is the main function
@@ -76,9 +76,10 @@ function forward_node(solver::MaxSens, node::Node, input::Hyperrectangle)
     β    = node.act(output)  # TODO expert suggestion for variable name. beta? β? O? x?
     βmax = node.act(output + deviation)
     βmin = node.act(output - deviation)
-    if solver.tight
-        return ((βmax + βmin)/2, (βmax - βmin)/2)
-    else
-        return (β, max(abs(βmax - β), abs(βmin - β)))
-    end
+    #if solver.tight
+    #    return ((βmax + βmin)/2, (βmax - βmin)/2)
+    #else
+    #    return (β, max(abs(βmax - β), abs(βmin - β)))
+    #end
+    return ((βmax + βmin)/2, (βmax - βmin)/2)
 end

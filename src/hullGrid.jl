@@ -14,13 +14,13 @@ HullReach performs over-approximated reachability analysis to compute the over-a
 # Property
 Sound but not complete.
 """
-@with_kw struct HullReach
+@with_kw struct HullGrid
     resolution::Float64 = 1.0
-    tight::Bool         = false
+    #tight::Bool         = false
 end
 
 # This is the main function
-function solve(solver::HullReach, problem::Problem) #original
+function solve(solver::HullGrid, problem::Problem) #original
     result = true
     delta = solver.resolution
     lower, upper = low(problem.input), high(problem.input)
@@ -54,7 +54,7 @@ function solve(solver::HullReach, problem::Problem) #original
 end
 
 # This function is called by forward_network
-function forward_layer(solver::HullReach, L::Layer, input::Hyperrectangle)
+function forward_layer(solver::HullGrid, L::Layer, input::Hyperrectangle)
     (W, b, act) = (L.weights, L.bias, L.activation)
     center = zeros(size(W, 1))
     gamma  = zeros(size(W, 1))
@@ -65,15 +65,16 @@ function forward_layer(solver::HullReach, L::Layer, input::Hyperrectangle)
     return Hyperrectangle(center, gamma)
 end
 
-function forward_node(solver::HullReach, node::Node, input::Hyperrectangle)
+function forward_node(solver::HullGrid, node::Node, input::Hyperrectangle)
     output    = node.w' * input.center + node.b
     deviation = sum(abs.(node.w) .* input.radius)
     β    = node.act(output)  # TODO expert suggestion for variable name. beta? β? O? x?
     βmax = node.act(output + deviation)
     βmin = node.act(output - deviation)
-    if solver.tight
-        return ((βmax + βmin)/2, (βmax - βmin)/2)
-    else
-        return (β, max(abs(βmax - β), abs(βmin - β)))
-    end
+    #if solver.tight
+    #    return ((βmax + βmin)/2, (βmax - βmin)/2)
+    #else
+    #    return (β, max(abs(βmax - β), abs(βmin - β)))
+    #end
+    return ((βmax + βmin)/2, (βmax - βmin)/2)
 end

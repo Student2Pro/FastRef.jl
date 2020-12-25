@@ -52,18 +52,18 @@ export solve
 include("reachability.jl")
 
 include("maxSens.jl")
-include("hullReach.jl")
+include("hullGrid.jl")
 include("dimGrid.jl")
 include("fastGrid.jl")
 
 include("speGuid.jl")
-include("hullSearch.jl")
+include("hullTree.jl")
 include("dimTree.jl")
 include("fastTree.jl")
 
-export MaxSens, HullReach, DimGrid
+export MaxSens, HullGrid, DimGrid
 export FastGrid
-export SpeGuid, HullSearch, DimTree
+export SpeGuid, HullTree, DimTree
 export FastTree
 
 end
