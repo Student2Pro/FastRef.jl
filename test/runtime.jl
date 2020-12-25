@@ -23,6 +23,7 @@ problem = Problem(nnet, in_hyper, out_hyper)
 
 time1 = 0
 
+solve(solver1, problem)
 for i = 1:10
     timed_result =@timed solve(solver1, problem)
     print("MaxSens - test " * string(i) * " - Time: " * string(timed_result.time) * " s")
@@ -37,6 +38,7 @@ print("Average time: " * string(time1/10) * " s\n\n")
 
 time2 = 0
 
+solve(solver2, problem)
 for i = 1:10
     timed_result =@timed solve(solver2, problem)
     print("HullGrid - test " * string(i) * " - Time: " * string(timed_result.time) * " s")
@@ -51,6 +53,7 @@ print("Average time: " * string(time2/10) * " s\n\n")
 
 time3 = 0
 
+solve(solver3, problem)
 for i = 1:10
     timed_result =@timed solve(solver3, problem)
     print("DimGrid - test " * string(i) * " - Time: " * string(timed_result.time) * " s")
@@ -65,6 +68,7 @@ print("Average time: " * string(time3/10) * " s\n\n")
 
 time4 = 0
 
+solve(solver4, problem)
 for i = 1:10
     timed_result =@timed solve(solver4, problem)
     print("FastGrid - test " * string(i) * " - Time: " * string(timed_result.time) * " s")
@@ -79,6 +83,7 @@ print("Average time: " * string(time4/10) * " s\n\n")
 
 time5 = 0
 
+solve(solver5, problem)
 for i = 1:10
     timed_result =@timed solve(solver5, problem)
     print("SpeGuid - test " * string(i) * " - Time: " * string(timed_result.time) * " s")
@@ -93,8 +98,9 @@ print("Average time: " * string(time5/10) * " s\n\n")
 
 time6 = 0
 
+solve(solver6, problem)
 for i = 1:10
-    timed_result =@timed solve(solver4, problem)
+    timed_result =@timed solve(solver6, problem)
     print("HullTree - test " * string(i) * " - Time: " * string(timed_result.time) * " s")
     print(" - Output: " * string(timed_result.value) * "\n")
     global time6 += timed_result.time
@@ -107,6 +113,7 @@ print("Average time: " * string(time6/10) * " s\n\n")
 
 time7 = 0
 
+solve(solver7, problem)
 for i = 1:10
     timed_result =@timed solve(solver7, problem)
     print("DimTree - test " * string(i) * " - Time: " * string(timed_result.time) * " s")
@@ -121,6 +128,7 @@ print("Average time: " * string(time7/10) * " s\n\n")
 
 time8 = 0
 
+solve(solver8, problem)
 for i = 1:10
     timed_result =@timed solve(solver8, problem)
     print("FastTree - test " * string(i) * " - Time: " * string(timed_result.time) * " s")

@@ -1,0 +1,49 @@
+Test Result of Group 1:
+MaxSens - test 1 - Time: 0.002075099 s - Output: BasicResult(:holds)
+MaxSens - test 2 - Time: 0.0018786 s - Output: BasicResult(:holds)
+MaxSens - test 3 - Time: 0.0018388 s - Output: BasicResult(:holds)
+MaxSens - test 4 - Time: 0.001889699 s - Output: BasicResult(:holds)
+MaxSens - test 5 - Time: 0.002342001 s - Output: BasicResult(:holds)
+MaxSens - test 6 - Time: 0.0021073 s - Output: BasicResult(:holds)
+MaxSens - test 7 - Time: 0.0021261 s - Output: BasicResult(:holds)
+MaxSens - test 8 - Time: 0.002179399 s - Output: BasicResult(:holds)
+MaxSens - test 9 - Time: 0.002799099 s - Output: BasicResult(:holds)
+MaxSens - test 10 - Time: 0.002373199 s - Output: BasicResult(:holds)
+Average time: 0.0021609295999999996 s
+
+HullGrid - test 1 - Time: 0.001774 s - Output: BasicResult(:holds)
+HullGrid - test 2 - Time: 0.001761399 s - Output: BasicResult(:holds)
+HullGrid - test 3 - Time: 0.001761 s - Output: BasicResult(:holds)
+HullGrid - test 4 - Time: 0.0018845 s - Output: BasicResult(:holds)
+HullGrid - test 5 - Time: 0.0019865 s - Output: BasicResult(:holds)
+HullGrid - test 6 - Time: 0.0154974 s - Output: BasicResult(:holds)
+HullGrid - test 7 - Time: 0.0017932 s - Output: BasicResult(:holds)
+HullGrid - test 8 - Time: 0.0017644 s - Output: BasicResult(:holds)
+HullGrid - test 9 - Time: 0.0017759 s - Output: BasicResult(:holds)
+HullGrid - test 10 - Time: 0.0017496 s - Output: BasicResult(:holds)
+Average time: 0.0031747899 s
+
+DimGrid - test 1 - Time: 0.027647 s - Output: BasicResult(:holds)
+DimGrid - test 2 - Time: 0.015934801 s - Output: BasicResult(:holds)
+DimGrid - test 3 - Time: 0.019646001 s - Output: BasicResult(:holds)
+DimGrid - test 4 - Time: 0.0321919 s - Output: BasicResult(:holds)
+DimGrid - test 5 - Time: 0.016335799 s - Output: BasicResult(:holds)
+DimGrid - test 6 - Time: 0.015854301 s - Output: BasicResult(:holds)
+DimGrid - test 7 - Time: 0.015727501 s - Output: BasicResult(:holds)
+DimGrid - test 8 - Time: 0.0294354 s - Output: BasicResult(:holds)
+DimGrid - test 9 - Time: 0.0158722 s - Output: BasicResult(:holds)
+DimGrid - test 10 - Time: 0.0158939 s - Output: BasicResult(:holds)
+Average time: 0.020453880299999998 s
+
+FastGrid - test 1 - Time: 0.0167062 s - Output: BasicResult(:holds)
+FastGrid - test 2 - Time: 0.027941101 s - Output: BasicResult(:holds)
+FastGrid - test 3 - Time: 0.0161857 s - Output: BasicResult(:holds)
+FastGrid - test 4 - Time: 0.0165475 s - Output: BasicResult(:holds)
+FastGrid - test 5 - Time: 0.0291772 s - Output: BasicResult(:holds)
+FastGrid - test 6 - Time: 0.0164059 s - Output: BasicResult(:holds)
+FastGrid - test 7 - Time: 0.016232299 s - Output: BasicResult(:holds)
+FastGrid - test 8 - Time: 0.0292147 s - Output: BasicResult(:holds)
+FastGrid - test 9 - Time: 0.016184201 s - Output: BasicResult(:holds)
+FastGrid - test 10 - Time: 0.0161923 s - Output: BasicResult(:holds)
+Average time: 0.0200787101 s
+

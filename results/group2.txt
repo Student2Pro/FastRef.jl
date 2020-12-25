@@ -1,0 +1,50 @@
+Test Result of Group 2:
+
+SpeGuid - test 1 - Time: 1.5e-5 s - Output: BasicResult(:holds)
+SpeGuid - test 2 - Time: 1.2299e-5 s - Output: BasicResult(:holds)
+SpeGuid - test 3 - Time: 4.8e-6 s - Output: BasicResult(:holds)
+SpeGuid - test 4 - Time: 2.199e-6 s - Output: BasicResult(:holds)
+SpeGuid - test 5 - Time: 1.12e-5 s - Output: BasicResult(:holds)
+SpeGuid - test 6 - Time: 2.2e-6 s - Output: BasicResult(:holds)
+SpeGuid - test 7 - Time: 3.101e-6 s - Output: BasicResult(:holds)
+SpeGuid - test 8 - Time: 3.199e-6 s - Output: BasicResult(:holds)
+SpeGuid - test 9 - Time: 2.0e-6 s - Output: BasicResult(:holds)
+SpeGuid - test 10 - Time: 3.3e-6 s - Output: BasicResult(:holds)
+Average time: 5.9298e-6 s
+
+HullTree - test 1 - Time: 1.66e-5 s - Output: BasicResult(:holds)
+HullTree - test 2 - Time: 4.4e-6 s - Output: BasicResult(:holds)
+HullTree - test 3 - Time: 3.601e-6 s - Output: BasicResult(:holds)
+HullTree - test 4 - Time: 1.09e-5 s - Output: BasicResult(:holds)
+HullTree - test 5 - Time: 2.101e-6 s - Output: BasicResult(:holds)
+HullTree - test 6 - Time: 2.1e-6 s - Output: BasicResult(:holds)
+HullTree - test 7 - Time: 5.7e-6 s - Output: BasicResult(:holds)
+HullTree - test 8 - Time: 2.101e-6 s - Output: BasicResult(:holds)
+HullTree - test 9 - Time: 4.399e-6 s - Output: BasicResult(:holds)
+HullTree - test 10 - Time: 3.599e-6 s - Output: BasicResult(:holds)
+Average time: 5.550099999999999e-6 s
+
+DimTree - test 1 - Time: 2.93e-5 s - Output: BasicResult(:holds)
+DimTree - test 2 - Time: 5.3e-6 s - Output: BasicResult(:holds)
+DimTree - test 3 - Time: 3.9e-6 s - Output: BasicResult(:holds)
+DimTree - test 4 - Time: 3.601e-6 s - Output: BasicResult(:holds)
+DimTree - test 5 - Time: 2.8e-6 s - Output: BasicResult(:holds)
+DimTree - test 6 - Time: 3.4e-6 s - Output: BasicResult(:holds)
+DimTree - test 7 - Time: 2.9e-6 s - Output: BasicResult(:holds)
+DimTree - test 8 - Time: 3.3e-6 s - Output: BasicResult(:holds)
+DimTree - test 9 - Time: 2.901e-6 s - Output: BasicResult(:holds)
+DimTree - test 10 - Time: 3.099e-6 s - Output: BasicResult(:holds)
+Average time: 6.0501e-6 s
+
+FastTree - test 1 - Time: 2.71e-5 s - Output: BasicResult(:holds)
+FastTree - test 2 - Time: 5.0e-6 s - Output: BasicResult(:holds)
+FastTree - test 3 - Time: 3.501e-6 s - Output: BasicResult(:holds)
+FastTree - test 4 - Time: 3.1e-6 s - Output: BasicResult(:holds)
+FastTree - test 5 - Time: 3.101e-6 s - Output: BasicResult(:holds)
+FastTree - test 6 - Time: 3.299e-6 s - Output: BasicResult(:holds)
+FastTree - test 7 - Time: 3.3e-6 s - Output: BasicResult(:holds)
+FastTree - test 8 - Time: 3.3e-6 s - Output: BasicResult(:holds)
+FastTree - test 9 - Time: 2.8e-6 s - Output: BasicResult(:holds)
+FastTree - test 10 - Time: 3.101e-6 s - Output: BasicResult(:holds)
+Average time: 5.7602e-6 s
+
